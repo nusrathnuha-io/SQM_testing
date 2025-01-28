@@ -1,3 +1,8 @@
+
+### M.R.F.NUSRATH NUHA
+### ICT/19/20/079
+### 5017
+
 # Swag Labs Login Automation Script
 
 This project automates the testing of the login functionality on the [Swag Labs website](https://www.saucedemo.com/) using Selenium WebDriver. The script performs automated testing for:
