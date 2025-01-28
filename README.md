@@ -75,8 +75,11 @@ python test.py
 
 ![web page openning](https://github.com/user-attachments/assets/2aea91f8-67c2-4e6a-b896-a774ba8e870a)
 
-![Screenshot of login succesfull in terminal](Screenshots/login successfull message in terminal.png)
-![Screenshot of valid login](Screenshots/successfull login.png)
+
+![Succesful login](https://github.com/user-attachments/assets/be7bc5af-7860-41f9-9571-6190d1524dae)
+
+![login successfull message  in terminal](https://github.com/user-attachments/assets/44119434-dc9f-4563-b781-9447f6c5566e)
+
 
 
 
@@ -85,8 +88,9 @@ python test.py
    - Password: `wrong_password`
    - Verification: Checks for error message "Epic sadface: Username and password do not match any user in this service"
 
-![Screenshot of login succesfull in terminal](Screenshots/invalid login message in terminal.png)
-![Screenshot of valid login](Screenshots/Invalid login.png)
+![Invalid login](https://github.com/user-attachments/assets/4c82057f-c8cf-449d-ba76-f753a953e3d8)
+![invalid login message in terminal](https://github.com/user-attachments/assets/5d73437d-d698-4872-96d5-308b793763b3)
+
 ## Troubleshooting
 
 ### Common Issues
