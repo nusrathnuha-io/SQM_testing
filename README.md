@@ -1,85 +1,83 @@
 # Swag Labs Login Automation Script
 
-This project automates the testing of the login functionality on the [Swag Labs website](https://www.saucedemo.com/) using Selenium WebDriver. It includes tests for successful and invalid login scenarios.
+This project automates the testing of the login functionality on the [Swag Labs website](https://www.saucedemo.com/) using Selenium WebDriver. The script performs automated testing for:
+- Successful Login
+- Invalid Login
 
-## Features
+## Setup and Execution
 
-- Automated testing of successful login with valid credentials
-- Validation of error messages for invalid login attempts
-- Chrome WebDriver integration
-- Easy-to-follow setup instructions
+### 1. Prerequisites
 
-## Prerequisites
-
-Before running the scripts, ensure you have:
+Make sure you have the following installed:
 
 1. **Python 3.8+**
-   - Download from [python.org](https://www.python.org/)
-   - Check "Add Python to PATH" during installation
+   - Download and install Python from [python.org](https://www.python.org/)
+   - Ensure you check the box for "Add Python to PATH" during installation
 
 2. **Google Chrome Browser**
-   - Download from [google.com/chrome](https://www.google.com/chrome/)
+   - Download and install Google Chrome from [google.com/chrome](https://www.google.com/chrome/)
 
 3. **ChromeDriver**
-   - Download from [chromedriver.chromium.org](https://chromedriver.chromium.org/downloads)
-   - Must match your Chrome browser version
-   - Add to system PATH
+   - Download the version that matches your Chrome browser from [chromedriver.chromium.org](https://chromedriver.chromium.org/downloads)
+   - Add the ChromeDriver executable to your system's PATH
 
-## Project Structure
-
-The project contains two main test scripts:
-
-- `login_successful.py`: Tests successful login scenario
-- `invalid_login.py`: Tests invalid login scenarios
-
-## Setup Instructions
-
-### 1. Create Virtual Environment
+### 2. Clone or Download the Repository
 
 ```bash
-# Create virtual environment
-python -m venv env
-
-# Activate virtual environment
-# For Windows:
-.\env\Scripts\activate
-# For macOS/Linux:
-source env/bin/activate
+git clone <repository-url>
 ```
 
-### 2. Install Dependencies
+Or download the repository as a ZIP file and extract it. Open the project folder in Visual Studio Code.
 
+### 3. Environment Setup
+
+#### Step 1: Create a Virtual Environment
+
+1. Open a terminal in Visual Studio Code
+2. Create a virtual environment:
+```bash
+python -m venv env
+```
+
+3. Activate the virtual environment:
+   - Windows:
+   ```bash
+   .\env\Scripts\activate
+   ```
+   - macOS/Linux:
+   ```bash
+   source env/bin/activate
+   ```
+
+#### Step 2: Install Required Dependencies
 ```bash
 pip install selenium webdriver-manager
 ```
 
-## Running the Tests
+### 4. Running the Script
 
-Ensure your virtual environment is activated before running the tests.
-
+1. Ensure your virtual environment is active (you should see `(env)` in your terminal)
+2. Run the script:
 ```bash
-# Run successful login test
-python login_successful.py
-
-# Run invalid login test
-python invalid_login.py
+python test.py
 ```
 
-## Test Scenarios
+## Project Structure
 
-### Successful Login Test
-- **Script**: `login_successful.py`
-- **Credentials**:
-  - Username: `standard_user`
-  - Password: `secret_sauce`
-- **Verification**: Checks for presence of `inventory_list` element after login
+### Main Files
+- `test.py`: Contains both successful and invalid login test scenarios
 
-### Invalid Login Test
-- **Script**: `invalid_login.py`
-- **Credentials**:
-  - Username: `wrong_user`
-  - Password: `wrong_password`
-- **Verification**: Checks for error message: "Epic sadface: Username and password do not match any user in this service"
+### Test Scenarios
+
+1. **Successful Login**
+   - Username: `standard_user`
+   - Password: `secret_sauce`
+   - Verification: Checks for `inventory_list` element on dashboard
+
+2. **Invalid Login**
+   - Username: `wrong_user`
+   - Password: `wrong_password`
+   - Verification: Checks for error message "Epic sadface: Username and password do not match any user in this service"
 
 ## Troubleshooting
 
@@ -87,17 +85,23 @@ python invalid_login.py
 
 1. **WebDriverException**
    - Verify ChromeDriver version matches your Chrome browser
-   - Ensure ChromeDriver is in system PATH
+   - Check if ChromeDriver is in system PATH
 
 2. **ModuleNotFoundError: No module named 'selenium'**
-   - Check virtual environment is activated
+   - Ensure virtual environment is activated
    - Run: `pip install selenium webdriver-manager`
 
 ## Dependencies
 
+Required Python packages:
 - selenium
 - webdriver-manager
 
+Install using:
+```bash
+pip install selenium webdriver-manager
+```
+
 ## Acknowledgments
 
-This project uses the Swag Labs demo website (https://www.saucedemo.com/) for educational purposes. Swag Labs is provided by Sauce Labs as a testing playground for automation practice.
+This project uses the Swag Labs demo website for educational purposes. Swag Labs is a test website provided for practicing Selenium automation.
