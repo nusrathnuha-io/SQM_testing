@@ -31,32 +31,31 @@ Or download the repository as a ZIP file and extract it. Open the project folder
 
 ### 3. Environment Setup
 
-#### Step 1: Create a Virtual Environment
 
-1. Open a terminal in Visual Studio Code
-2. Create a virtual environment:
+
+1. Create a conda environment:
 ```bash
-python -m venv env
+conda create --name SQM_env python=3.9 -y
+
 ```
 
-3. Activate the virtual environment:
-   - Windows:
-   ```bash
-   .\env\Scripts\activate
-   ```
-   - macOS/Linux:
-   ```bash
-   source env/bin/activate
-   ```
+2. Activate the conda environment:
+```bash
+conda activate SQM_env
+```
 
-#### Step 2: Install Required Dependencies
+### 4. Install Required Dependencies
+
+After activating either environment, install the required packages:
 ```bash
 pip install selenium webdriver-manager
 ```
 
-### 4. Running the Script
+### 5. Running the Script
 
-1. Ensure your virtual environment is active (you should see `(env)` in your terminal)
+1. Ensure your environment is active:
+   - For venv: You should see `(env)` in your terminal
+   - For conda: You should see `(SQM_env)` in your terminal
 2. Run the script:
 ```bash
 python test.py
@@ -74,11 +73,19 @@ python test.py
    - Password: `secret_sauce`
    - Verification: Checks for `inventory_list` element on dashboard
 
+![Screenshot of Web page](Screenshots/web page openning.png)
+![Screenshot of login succesfull in terminal](Screenshots/login successfull message in terminal.png)
+![Screenshot of valid login](Screenshots/successfull login.png)
+
+
+
 2. **Invalid Login**
    - Username: `wrong_user`
    - Password: `wrong_password`
    - Verification: Checks for error message "Epic sadface: Username and password do not match any user in this service"
 
+![Screenshot of login succesfull in terminal](Screenshots/invalid login message in terminal.png)
+![Screenshot of valid login](Screenshots/Invalid login.png)
 ## Troubleshooting
 
 ### Common Issues
@@ -88,7 +95,7 @@ python test.py
    - Check if ChromeDriver is in system PATH
 
 2. **ModuleNotFoundError: No module named 'selenium'**
-   - Ensure virtual environment is activated
+   - Ensure your chosen environment (venv or conda) is activated
    - Run: `pip install selenium webdriver-manager`
 
 ## Dependencies
