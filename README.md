@@ -84,7 +84,7 @@ python test.py
 
 ![Succesful login](https://github.com/user-attachments/assets/be7bc5af-7860-41f9-9571-6190d1524dae)
 
-![login successfull message  in terminal](https://github.com/user-attachments/assets/44119434-dc9f-4563-b781-9447f6c5566e)
+
 
 
 
@@ -95,7 +95,8 @@ python test.py
    - Verification: Checks for error message "Epic sadface: Username and password do not match any user in this service"
 
 ![Invalid login](https://github.com/user-attachments/assets/4c82057f-c8cf-449d-ba76-f753a953e3d8)
-![invalid login message in terminal](https://github.com/user-attachments/assets/5d73437d-d698-4872-96d5-308b793763b3)
+![Screenshot (168)](https://github.com/user-attachments/assets/6e77c807-0c4e-4c71-8492-b4a65c64ff65)
+
 
 ## Troubleshooting
 
