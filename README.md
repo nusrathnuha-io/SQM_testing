@@ -73,7 +73,8 @@ python test.py
    - Password: `secret_sauce`
    - Verification: Checks for `inventory_list` element on dashboard
 
-![Screenshot of Web page](Screenshots/web page openning.png)
+![web page openning](https://github.com/user-attachments/assets/2aea91f8-67c2-4e6a-b896-a774ba8e870a)
+
 ![Screenshot of login succesfull in terminal](Screenshots/login successfull message in terminal.png)
 ![Screenshot of valid login](Screenshots/successfull login.png)
 
