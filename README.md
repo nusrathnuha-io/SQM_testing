@@ -24,7 +24,8 @@ Make sure you have the following installed:
 ### 2. Clone or Download the Repository
 
 ```bash
-git clone [<repository-url>](https://github.com/nusrathnuha-io/SQM_testing)
+git clone https://github.com/nusrathnuha-io/SQM_testing
+
 ```
 
 Or download the repository as a ZIP file and extract it. Open the project folder in Visual Studio Code.
