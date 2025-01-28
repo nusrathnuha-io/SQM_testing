@@ -1,55 +1,91 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from datetime import datetime
 
-def login_successful(username, password):
+def log_action(message):
+   
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open("interaction_log.txt", "a") as log_file:
+        log_file.write(f"[{timestamp}] {message}\n")
+
+def setup_driver():
+   
     driver = webdriver.Chrome()
-    driver.get("https://www.saucedemo.com/")
     driver.maximize_window()
-    time.sleep(3)
+    return driver
 
-    # Enter credentials and login
-    driver.find_element(By.ID, "user-name").send_keys(username)
-    driver.find_element(By.ID, "password").send_keys(password)
-    driver.find_element(By.ID, "login-button").click()
-    time.sleep(3)
-
+def login_test(username, password, expected_success=True):
+   
+    driver = None
     try:
-        driver.find_element(By.CLASS_NAME, "inventory_list")
-        print(f"Login Successful for username: {username}")
-    except:
-        print("Unexpected error. Login may have failed.")
+        driver = setup_driver()
+        log_action(f"Starting login test for username: {username}")
+        
+        # Navigate to the login page
+        driver.get("https://www.saucedemo.com/")
+        
+        # Wait for elements and perform login
+        wait = WebDriverWait(driver, 10)
+        username_field = wait.until(EC.presence_of_element_located((By.ID, "user-name")))
+        password_field = driver.find_element(By.ID, "password")
+        login_button = driver.find_element(By.ID, "login-button")
+        
+        username_field.send_keys(username)
+        password_field.send_keys(password)
+        login_button.click()
+        
+        if expected_success:
+            # Check for successful login
+            try:
+                wait.until(EC.presence_of_element_located((By.CLASS_NAME, "inventory_list")))
+                message = f"Login successful for username: {username}"
+                print(message)
+                log_action(message)
+            except TimeoutException:
+                message = f"Login failed unexpectedly for username: {username}"
+                print(message)
+                log_action(message)
+                raise Exception(message)
+        else:
+            # Check for error message
+            try:
+                error_message = wait.until(EC.presence_of_element_located(
+                    (By.XPATH, "//h3[@data-test='error']")))
+                message = f"Invalid login detected for username: {username} with error: {error_message.text}"
+                print(message)
+                log_action(message)
+            except TimeoutException:
+                message = f"Error message not found for invalid login attempt with username: {username}"
+                print(message)
+                log_action(message)
+                raise Exception(message)
+                
+    except Exception as e:
+        error_message = f"Test failed with error: {str(e)}"
+        print(error_message)
+        log_action(error_message)
+        
+    finally:
+        if driver:
+            driver.quit()
+            log_action("Browser session ended")
 
-    driver.quit()
-
-
-def invalid_login_test(username, password):
-    driver = webdriver.Chrome()
-    driver.get("https://www.saucedemo.com/")
-    driver.maximize_window()
-    time.sleep(6)
-
-    # Enter invalid credentials and attempt login
-    driver.find_element(By.ID, "user-name").send_keys(username)
-    driver.find_element(By.ID, "password").send_keys(password)
-    driver.find_element(By.ID, "login-button").click()
-    time.sleep(6)
-
-    try:
-        # Look for an error message indicating invalid login
-        error_message = driver.find_element(By.XPATH, "//h3[@data-test='error']")
-        if error_message:
-            print(f"Invalid login detected for username: {username} with error: {error_message.text}")
-    except:
-        print("Login error handling failed. Check the script or site structure.")
-
-    driver.quit()
-
+def main():
+   
+    print("Starting login tests...")
+    log_action("Beginning test suite execution")
+    
+    # Test valid login
+    login_test("standard_user", "secret_sauce", expected_success=True)
+    
+    # Test invalid login
+    login_test("wrong_user", "wrong_password", expected_success=False)
+    
+    log_action("Test suite execution completed")
+    print("All tests completed!")
 
 if __name__ == "__main__":
-    print("Testing successful login...")
-    login_successful("standard_user", "secret_sauce")
-    
-    print("Testing invalid login...")
-    invalid_login_test("wrong_user", "wrong_password")
-
+    main()
